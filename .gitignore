@@ -10,6 +10,10 @@
 *.lock
 *.md
 *.iml
+*.idea
+*.gradle
+*.idx
+*.html
 
 # Packages #
 ############
@@ -25,12 +29,14 @@
 *.zip
 *.xml
 *.bin
+*.html
 
 # Logs and databases #
 ######################
 *.log
 *.sql
 *.sqlite
+*.html
 
 # OS generated files #
 ######################
@@ -41,3 +47,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.html

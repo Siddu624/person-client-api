@@ -1,0 +1,15 @@
+os: osx
+
+language: java
+jdk: openjdk11
+
+script:
+  - ./gradlew test
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: 19554c07-2c74-4541-b296-478bd04c915a
+  app: person-client-api
+  on:
+    repo: Siddu624/person-client-api
