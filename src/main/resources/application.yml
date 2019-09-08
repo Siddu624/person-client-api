@@ -13,3 +13,11 @@ eureka:
       defaultZone: https://service-registry-person.herokuapp.com/eureka
   instance:
     hostname: service-registry-person.herokuapp.com
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
