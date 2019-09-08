@@ -37,7 +37,6 @@ public class PersonClient {
 
     @HystrixCommand(fallbackMethod = "createPersonfallback")
     public String createPerson(PersonRequest personRequest) {
-   //  return restTemplate.exchange("http://PERSON-USER-PROFILE-API/api/person/", HttpMethod.POST, null, String.class).getBody();
         String response = restTemplate.postForObject(
                 "https://person-profile-api.herokuapp.com/api/person/",personRequest,
                 String.class);
