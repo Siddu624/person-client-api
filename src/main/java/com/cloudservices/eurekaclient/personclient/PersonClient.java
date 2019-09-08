@@ -30,16 +30,19 @@ public class PersonClient {
 
     @HystrixCommand(fallbackMethod = "getPersonList")
     public List<PersonResponse> getPersons() {
-        ResponseEntity<List<PersonResponse>> response = restTemplate.exchange("https://person-profile-api.herokuapp.com/api/person/", HttpMethod.GET, null, new ParameterizedTypeReference<List<PersonResponse>>(){});
+        ResponseEntity<List<PersonResponse>> response = restTemplate.exchange("https://person-profile-api.herokuapp.com/api/person/",
+                HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<PersonResponse>>(){});
         List<PersonResponse> personResponseList = response.getBody();
         return personResponseList;
     }
 
     @HystrixCommand(fallbackMethod = "createPersonfallback")
     public String createPerson(PersonRequest personRequest) {
-        String response = restTemplate.postForObject(
-                "https://person-profile-api.herokuapp.com/api/person/",personRequest,
-                String.class);
+        String response = restTemplate.exchange(
+                "https://person-profile-api.herokuapp.com/api/person/", HttpMethod.POST,
+                new HttpEntity<>(personRequest),
+                String.class).getBody().toString();
         return response;
     }
     @HystrixCommand(fallbackMethod = "updatePersonfallback")
@@ -51,7 +54,9 @@ public class PersonClient {
 
     @HystrixCommand(fallbackMethod = "deletePersonByIdfallback")
     public String deletePersonById(int id) {
-        restTemplate.exchange("https://person-profile-api.herokuapp.com/api/person/?personId="+id,HttpMethod.DELETE,null,String.class).getBody().toString();
+        restTemplate.exchange("https://person-profile-api.herokuapp.com/api/person/?personId="+id,
+                HttpMethod.DELETE,null,
+                String.class).getBody().toString();
         return "Deleted succesfully";
 
     }
