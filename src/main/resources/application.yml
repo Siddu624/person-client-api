@@ -12,4 +12,4 @@ eureka:
     serviceUrl:
       defaultZone: https://service-registry-person.herokuapp.com/eureka
   instance:
-    hostname: localhost
+    hostname: service-registry-person.herokuapp.com

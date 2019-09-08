@@ -44,7 +44,7 @@ public class PersonClient {
     }
     @HystrixCommand(fallbackMethod = "updatePersonfallback")
     public String updatePerson(PersonRequest personUpdateRequest, int id) {
-            return restTemplate.exchange("http://PERSON-USER-PROFILE-API/api/person/?personId="+id, HttpMethod.PUT,
+            return restTemplate.exchange("https://person-profile-api.herokuapp.com/api/person/?personId="+id, HttpMethod.PUT,
                     new HttpEntity<>(personUpdateRequest),String.class).getBody().toString();
 
     }
