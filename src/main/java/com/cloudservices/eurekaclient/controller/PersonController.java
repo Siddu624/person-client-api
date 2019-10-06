@@ -15,6 +15,7 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
+    @CrossOrigin
     @RequestMapping(value = "/person/", method = RequestMethod.GET)
     public List<PersonResponse> getPerson(){
         return personService.retrievePerson();
