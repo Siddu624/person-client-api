@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/api/client")
 public class PersonController {
 
     @Autowired
     PersonService personService;
 
-    @CrossOrigin
     @RequestMapping(value = "/person/", method = RequestMethod.GET)
     public List<PersonResponse> getPerson(){
         return personService.retrievePerson();
